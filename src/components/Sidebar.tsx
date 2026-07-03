@@ -69,7 +69,7 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
       <div className="p-4 flex items-center gap-3">
         <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 shadow-lg shadow-emerald-500/20 bg-black">
           <img 
-            src="https://storage.googleapis.com/bit-pwa-public-assets/lidex-logo.png" 
+            src="/lidex-logo.png" 
             alt="Lidex Logo" 
             className="w-full h-full object-contain"
           />
@@ -95,7 +95,7 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
         </section>
 
         <section>
-          {isOpen && <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-2 mb-4">Market Intelligence</p>}
+          {isOpen && <p className="sidebar-heading">Market Intelligence</p>}
           <div className="space-y-1">
             <NavItem icon={<TrendingUp size={20} />} label="AI Signals" active={activeTab === 'signals'} onClick={() => navigate('/analytics')} isOpen={isOpen} />
             <NavItem icon={<Globe size={20} />} label="News & Events" active={activeTab === 'news'} onClick={() => navigate('/company')} isOpen={isOpen} />
@@ -104,7 +104,7 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
         </section>
 
         <section>
-          {isOpen && <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-2 mb-4">Account & Trust</p>}
+          {isOpen && <p className="sidebar-heading">Account & Trust</p>}
           <div className="space-y-1">
             <NavItem icon={<Settings size={20} />} label="Profile Settings" active={activeTab === 'settings'} onClick={() => navigate('/settings')} isOpen={isOpen} />
             <NavItem icon={<Shield size={20} />} label="Security & Trust" active={activeTab === 'security'} onClick={() => navigate('/security')} isOpen={isOpen} />
@@ -113,7 +113,7 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
         </section>
 
         <section>
-          {isOpen && <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-2 mb-4">Resources</p>}
+          {isOpen && <p className="sidebar-heading">Resources</p>}
           <div className="space-y-1">
             <NavItem icon={<HelpCircle size={20} />} label="Support Center" active={activeTab === 'support'} onClick={() => navigate('/support')} isOpen={isOpen} />
             <NavItem icon={<Rocket size={20} />} label="About Lidex" active={activeTab === 'company'} onClick={() => navigate('/company')} isOpen={isOpen} />
@@ -123,7 +123,7 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
 
         {user?.role === 'admin' && (
           <section>
-            {isOpen && <p className="text-[10px] font-bold text-rose-500 uppercase tracking-widest px-2 mb-4">Administration</p>}
+            {isOpen && <p className="sidebar-heading text-rose-500">Administration</p>}
             <div className="space-y-1">
               <NavItem icon={<ShieldAlert size={20} className="text-rose-500" />} label="System Admin" active={activeTab === 'admin'} onClick={() => navigate('/admin')} isOpen={isOpen} />
             </div>
@@ -137,16 +137,16 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
 
       {/* Upgrade Banner */}
       {isOpen && (
-        <div className="p-4">
-          <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-purple-500/30 rounded-2xl p-4 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-2">
-              <Award className="text-purple-400 opacity-20 group-hover:opacity-40 transition-opacity" size={40} />
+        <div className="p-3">
+          <div className="bg-gradient-to-br from-emerald-600/15 to-blue-600/15 border border-emerald-500/20 rounded-3xl p-4 relative overflow-hidden group">
+            <div className="absolute top-3 right-3 p-1">
+              <Award className="text-emerald-400 opacity-20 group-hover:opacity-40 transition-opacity" size={32} />
             </div>
-            <p className="text-sm font-bold text-white mb-1">Upgrade to VIP</p>
-            <p className="text-[10px] text-gray-400 mb-3">Unlock Advanced AI Strategies & Higher Limits</p>
+            <p className="text-xs font-semibold text-white mb-1">Upgrade to VIP</p>
+            <p className="text-[10px] text-gray-400 leading-4 mb-3">Unlock advanced AI strategies & higher limits</p>
             <button 
               onClick={onUpgrade}
-              className="w-full py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-xs font-bold text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+              className="w-full py-2 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-2xl text-[11px] font-semibold text-white hover:shadow-lg hover:shadow-emerald-500/20 transition-all"
             >
               Upgrade Now
             </button>
@@ -161,13 +161,13 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
       )} onClick={() => setIsMobileOpen(false)} />
 
       <aside className={cn(
-        "fixed inset-y-0 left-0 z-50 w-72 bg-[#0d0e1a] border-r border-white/10 transition-transform duration-300 md:hidden",
+        "fixed inset-y-0 left-0 z-50 w-72 bg-[#0d0e1a] border-r border-white/10 transition-transform duration-300 md:hidden shadow-xl",
         isMobileOpen ? 'translate-x-0' : '-translate-x-full'
       )}>
         <div className="p-4 flex items-center gap-3 border-b border-white/10">
           <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 shadow-lg shadow-emerald-500/20 bg-black">
             <img 
-              src="https://storage.googleapis.com/bit-pwa-public-assets/lidex-logo.png" 
+              src="/lidex-logo.png" 
               alt="Lidex Logo" 
               className="w-full h-full object-contain"
             />
@@ -214,15 +214,15 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
           </div>
         </div>
         <div className="p-4 border-t border-white/10">
-          <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl p-4 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-emerald-600/20 to-blue-600/20 rounded-3xl p-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-20">
-              <Award className="text-purple-400" size={40} />
+              <Award className="text-emerald-400" size={40} />
             </div>
             <p className="text-xs font-bold text-white mb-1">Upgrade to VIP</p>
             <p className="text-[11px] text-gray-400 mb-3">Unlock Advanced AI Strategies & Higher Limits</p>
             <button 
               onClick={onUpgrade}
-              className="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-xs font-bold text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+              className="w-full py-3 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-xl text-xs font-bold text-white hover:shadow-lg hover:shadow-emerald-500/20 transition-all"
             >
               Upgrade Now
             </button>
@@ -233,24 +233,20 @@ const Sidebar = ({ isOpen, isMobileOpen, setIsOpen, setIsMobileOpen, activeTab, 
   );
 };
 
-function handleClick(path: string) {
-  navigate(path);
-  setIsMobileOpen(false);
-}
 function NavItem({ icon, label, active = false, isOpen, onClick }: { icon: React.ReactNode, label: string, active?: boolean, isOpen: boolean, onClick?: () => void }) {
   return (
     <button 
       onClick={onClick}
       className={cn(
-        "w-full flex items-center gap-3 px-3 py-3 rounded-2xl transition-all text-left",
+        "w-full flex items-center gap-3 px-3 py-3 rounded-2xl transition-all text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/20",
         active 
-          ? "bg-purple-600/10 text-white border border-purple-600/20 shadow-lg shadow-purple-500/10" 
+          ? "bg-emerald-600/10 text-white border border-emerald-600/20 shadow-lg shadow-emerald-500/10" 
           : "text-gray-400 hover:text-white hover:bg-white/5"
       )}
     >
-      <span className={cn("transition-colors", active ? "text-purple-400" : "text-gray-400")}>{icon}</span>
+      <span className={cn("transition-colors", active ? "text-emerald-400" : "text-gray-400")}>{icon}</span>
       <span className="flex-1 text-sm font-bold">{label}</span>
-      {active && <span className="w-2 h-2 rounded-full bg-purple-500" />}
+      {active && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
     </button>
   );
 }

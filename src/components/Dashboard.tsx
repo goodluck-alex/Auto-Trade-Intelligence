@@ -20,8 +20,8 @@ const Dashboard = () => {
       <IntelligenceHub />
 
       {/* Risk Alert Banner */}
-      <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="banner-base">
+        <div className="flex items-center gap-3 min-w-0">
           <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
             <ShieldCheck size={18} />
           </div>
@@ -30,8 +30,8 @@ const Dashboard = () => {
             <p className="text-[10px] text-gray-500">Portfolio protected by Capital Preservation Engine. Max drawdown limit: 5% Daily.</p>
           </div>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="text-right">
+        <div className="flex items-center gap-4 flex-wrap justify-end">
+          <div className="text-right min-w-[110px]">
             <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Global Exposure</p>
             <p className="text-xs font-bold text-white">12.4% / 40%</p>
           </div>
@@ -42,7 +42,7 @@ const Dashboard = () => {
       </div>
 
       {/* Top Row: Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         <StatCard 
           label="Total Balance" 
           value="$125,430.50" 

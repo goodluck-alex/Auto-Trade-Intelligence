@@ -1,11 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-purple-600: #7c3aed;
-  --color-purple-500: #a855f7;
-  --color-purple-400: #c084fc;
+  --color-emerald-600: #059669;
   --color-emerald-500: #10b981;
+  --color-emerald-400: #34d399;
   --color-rose-500: #f43f5e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-feature-settings: 'cv02' 1, 'cv03' 1, 'cv04' 1;
+  }
 }
 
 @layer utilities {
@@ -15,6 +26,43 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .card-base {
+    @apply bg-white dark:bg-[#161723] border border-gray-200/70 dark:border-white/10 rounded-3xl p-6 shadow-sm transition-all duration-300;
+  }
+  .panel-base {
+    @apply bg-white dark:bg-[#161723] border border-gray-200/70 dark:border-white/10 rounded-3xl shadow-2xl transition-all duration-300;
+  }
+  .ticker-pill {
+    @apply inline-flex items-center gap-3 rounded-2xl border border-gray-200/70 dark:border-white/10 bg-white dark:bg-[#161723] px-4 py-2 text-sm font-bold text-gray-800 dark:text-gray-200 transition-all duration-300;
+  }
+  .card-compact {
+    @apply p-5;
+  }
+  .card-title {
+    @apply text-sm font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-4;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 text-white px-4 py-3 font-bold transition-all duration-200 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/30;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 text-gray-400 px-4 py-3 font-bold transition-all duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-500/20;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl text-gray-400 px-4 py-3 transition-all duration-200 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-emerald-500/10;
+  }
+  .text-title {
+    @apply text-2xl font-black text-white;
+  }
+  .text-section {
+    @apply text-sm font-bold text-white uppercase tracking-wider;
+  }
+  .text-label {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400;
+  }
+  .text-value {
+    @apply text-base font-black text-gray-900 dark:text-white;
   }
 }
 

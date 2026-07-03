@@ -33,17 +33,17 @@ const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative w-full max-w-lg dark:bg-[#161723] bg-white rounded-3xl overflow-hidden shadow-2xl border dark:border-white/10 border-gray-200">
-        <button onClick={onClose} className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors">
+      <div className="relative w-full max-w-md panel-base overflow-hidden">
+        <button onClick={onClose} className="absolute top-5 right-5 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors">
           <X size={20} />
         </button>
 
-        <div className="p-8">
+        <div className="p-6">
           {step === 1 && (
-            <div className="space-y-6">
+            <div className="space-y-5">
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Star className="text-purple-500 fill-purple-500" size={32} />
+                <div className="w-16 h-16 bg-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Star className="text-emerald-500 fill-emerald-500" size={32} />
                 </div>
                 <h2 className="text-2xl font-black dark:text-white text-gray-900">Upgrade to VIP</h2>
                 <p className="text-gray-500 text-sm mt-1">Unlock the full power of LIDEX AI Trading.</p>
@@ -57,28 +57,28 @@ const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
                 <Benefit item="Exclusive VIP Referral Commissions" />
               </div>
 
-              <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-6 text-center">
-                <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">VIP Monthly</p>
-                <div className="flex items-center justify-center gap-2">
-                  <span className="text-4xl font-black dark:text-white text-gray-900">$199</span>
-                  <span className="text-gray-500 font-bold">/ month</span>
+              <div className="bg-emerald-600/10 border border-emerald-500/20 rounded-2xl p-4 text-center">
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">VIP Monthly</p>
+                <div className="flex items-end justify-center gap-2">
+                  <span className="text-3xl font-black dark:text-white text-gray-900">$199</span>
+                  <span className="text-sm text-gray-500 font-semibold">/ month</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <button 
                   onClick={() => { setMethod('card'); setStep(2); }}
-                  className="p-4 rounded-2xl border-2 border-purple-500/20 hover:border-purple-500 bg-purple-500/5 transition-all text-center group"
+                  className="p-4 rounded-2xl border border-emerald-500/20 hover:border-emerald-500 bg-emerald-500/5 transition-all text-center group"
                 >
-                  <CreditCard className="mx-auto mb-2 text-purple-500 group-hover:scale-110 transition-transform" size={24} />
-                  <span className="text-xs font-bold dark:text-white text-gray-900">Credit Card</span>
+                  <CreditCard className="mx-auto mb-2 text-emerald-500 group-hover:scale-110 transition-transform" size={22} />
+                  <span className="text-[11px] font-semibold dark:text-white text-gray-900">Credit Card</span>
                 </button>
                 <button 
                   onClick={() => { setMethod('crypto'); setStep(2); }}
-                  className="p-4 rounded-2xl border-2 border-orange-500/20 hover:border-orange-500 bg-orange-500/5 transition-all text-center group"
+                  className="p-4 rounded-2xl border border-orange-500/20 hover:border-orange-500 bg-orange-500/5 transition-all text-center group"
                 >
-                  <Bitcoin className="mx-auto mb-2 text-orange-500 group-hover:scale-110 transition-transform" size={24} />
-                  <span className="text-xs font-bold dark:text-white text-gray-900">Crypto Pay</span>
+                  <Bitcoin className="mx-auto mb-2 text-orange-500 group-hover:scale-110 transition-transform" size={22} />
+                  <span className="text-[11px] font-semibold dark:text-white text-gray-900">Crypto Pay</span>
                 </button>
               </div>
             </div>
@@ -87,22 +87,22 @@ const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
           {step === 2 && method === 'card' && (
             <div className="space-y-6">
               <h3 className="text-xl font-bold dark:text-white text-gray-900 flex items-center gap-2">
-                <CreditCard className="text-purple-500" /> Payment Details
+                <CreditCard className="text-emerald-500" /> Payment Details
               </h3>
               
               <div className="space-y-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Card Number</label>
-                  <input type="text" placeholder="**** **** **** 4242" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all" />
+                  <input type="text" placeholder="**** **** **** 4242" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Expiry Date</label>
-                    <input type="text" placeholder="MM/YY" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all" />
+                    <input type="text" placeholder="MM/YY" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">CVC</label>
-                    <input type="password" placeholder="***" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all" />
+                    <input type="password" placeholder="***" className="w-full px-4 py-3 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all" />
                   </div>
                 </div>
               </div>
@@ -140,7 +140,7 @@ const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">BTC Wallet Address (SegWit)</p>
                   <div className="flex items-center gap-2 bg-black/20 p-3 rounded-xl border border-white/5">
                     <span className="text-xs font-mono text-gray-400 flex-1 truncate">bc1qxy2kg3ryyqxclv786p55hf…</span>
-                    <button className="text-purple-500 hover:text-purple-400 transition-colors">
+                    <button className="text-emerald-500 hover:text-emerald-400 transition-colors">
                       <Copy size={16} />
                     </button>
                   </div>
