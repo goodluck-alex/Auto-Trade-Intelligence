@@ -48,7 +48,7 @@ const AnalyticsPage = () => {
         </div>
         <div className="flex bg-[#161723] p-1 rounded-xl border border-white/5">
           {['1M', '3M', '6M', '1Y', 'All'].map((p) => (
-            <button key={p} className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${p === '1M' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'text-gray-500 hover:text-white'}`}>
+            <button key={p} className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${p === '1M' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-gray-500 hover:text-white'}`}>
               {p}
             </button>
           ))}
@@ -65,7 +65,7 @@ const AnalyticsPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main ROI Chart */}
-        <div className="lg:col-span-2 bg-[#161723] border border-white/5 rounded-2xl p-6 h-[400px] flex flex-col">
+        <div className="lg:col-span-2 card-base min-h-[420px] flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <h3 className="text-sm font-bold text-white uppercase tracking-wider">ROI Growth Over Time</h3>
@@ -80,8 +80,8 @@ const AnalyticsPage = () => {
               <AreaChart data={roiData}>
                 <defs>
                   <linearGradient id="colorRoi" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#a855f7" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#a855f7" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
@@ -91,14 +91,14 @@ const AnalyticsPage = () => {
                   contentStyle={{backgroundColor: '#0d0e1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px'}}
                   itemStyle={{fontSize: '12px', fontWeight: 'bold'}}
                 />
-                <Area type="monotone" dataKey="roi" stroke="#a855f7" strokeWidth={3} fillOpacity={1} fill="url(#colorRoi)" />
+                <Area type="monotone" dataKey="roi" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorRoi)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Profit Distribution */}
-        <div className="bg-[#161723] border border-white/5 rounded-2xl p-6 h-[400px] flex flex-col">
+        <div className="card-base min-h-[420px] flex flex-col">
           <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-8">Profit by Asset</h3>
           <div className="flex-1">
             <ResponsiveContainer width="100%" height="100%">
@@ -123,7 +123,7 @@ const AnalyticsPage = () => {
       </div>
 
       {/* Bot Specific Performance */}
-      <div className="bg-[#161723] border border-white/5 rounded-2xl p-6">
+      <div className="card-base">
         <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-6">Strategy Efficiency Ranking</h3>
         <div className="space-y-4">
           <StrategyRank bot="AI Trend Master" efficiency={94} trades={420} winRate="72%" />
@@ -137,9 +137,9 @@ const AnalyticsPage = () => {
 };
 
 const MetricCard = ({ label, value, icon, sub, positive, negative }: any) => (
-  <div className="bg-[#161723] border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-all group">
+  <div className="card-base p-5 hover:border-white/10 transition-all group">
     <div className="flex items-center justify-between mb-4">
-      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 group-hover:text-purple-400 transition-colors">
+      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 group-hover:text-emerald-400 transition-colors">
         {icon}
       </div>
       {positive && <ArrowUpRight size={16} className="text-emerald-500" />}
@@ -157,13 +157,13 @@ const StrategyRank = ({ bot, efficiency, trades, winRate }: any) => (
   <div className="flex items-center gap-6 group">
     <div className="w-1/4">
       <p className="text-xs font-bold text-white flex items-center gap-2">
-        <Zap size={14} className="text-purple-500" /> {bot}
+        <Zap size={14} className="text-emerald-500" /> {bot}
       </p>
       <p className="text-[10px] text-gray-500 mt-1">{trades} Trades</p>
     </div>
     <div className="flex-1 h-2 bg-black/30 rounded-full overflow-hidden">
       <div 
-        className="h-full bg-gradient-to-r from-purple-600 to-blue-500 group-hover:from-purple-500 group-hover:to-emerald-500 transition-all duration-500" 
+        className="h-full bg-gradient-to-r from-emerald-600 to-blue-500 group-hover:from-emerald-500 group-hover:to-emerald-500 transition-all duration-500" 
         style={{width: `${efficiency}%`}} 
       />
     </div>

@@ -13,7 +13,7 @@ const STORAGE_KEYS = {
 
 // Initial Data
 const defaultBots = [
-  { id: 1, name: 'AI Trend Master', exchange: 'Binance Futures', status: 'Running', strategy: 'Trend Following', pnl: '+24.35%', winRate: '68%', drawdown: '5.2%', health: 98, color: 'from-purple-500 to-blue-500' },
+  { id: 1, name: 'AI Trend Master', exchange: 'Binance Futures', status: 'Running', strategy: 'Trend Following', pnl: '+24.35%', winRate: '68%', drawdown: '5.2%', health: 98, color: 'from-emerald-500 to-blue-500' },
   { id: 2, name: 'Grid Scalper Pro', exchange: 'Bybit Futures', status: 'Running', strategy: 'Mean Reversion', pnl: '+18.75%', winRate: '72%', drawdown: '4.8%', health: 92, color: 'from-emerald-500 to-teal-500' },
 ];
 

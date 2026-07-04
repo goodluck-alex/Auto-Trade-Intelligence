@@ -52,7 +52,7 @@ const BotsPage = () => {
       name,
       exchange: 'Binance Futures',
       strategy: 'Trend Following',
-      color: 'from-purple-500 to-indigo-500'
+      color: 'from-emerald-500 to-indigo-500'
     });
     const freshBots = await mockApi.getBots();
     setBots(freshBots);
@@ -69,7 +69,7 @@ const BotsPage = () => {
         </div>
         <button 
           onClick={handleCreate}
-          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-sm font-bold text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-xl text-sm font-bold text-white hover:shadow-lg hover:shadow-emerald-500/20 transition-all"
         >
           <Zap size={18} /> Deploy New Strategy
         </button>
@@ -77,7 +77,7 @@ const BotsPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {bots.map((bot) => (
-          <div key={bot.id} className={`dark:bg-[#161723] bg-white border ${bot.status === 'Running' ? 'border-emerald-500/50 shadow-lg shadow-emerald-500/5' : 'dark:border-white/5 border-gray-200'} rounded-2xl p-6 transition-all group relative overflow-hidden`}>
+          <div key={bot.id} className={`card-base ${bot.status === 'Running' ? 'border-emerald-500/50 shadow-lg shadow-emerald-500/5' : 'dark:border-white/5 border-gray-200'} transition-all group relative overflow-hidden`}>
             {bot.status === 'Running' && (
                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full -mr-16 -mt-16" />
             )}
@@ -95,12 +95,12 @@ const BotsPage = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-black dark:text-white text-gray-900 group-hover:text-purple-600 transition-colors">{bot.name}</h3>
+                    <h3 className="text-lg font-black dark:text-white text-gray-900 group-hover:text-emerald-600 transition-colors">{bot.name}</h3>
                     {bot.status === 'Running' && (
                       <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[8px] font-black uppercase tracking-widest border border-emerald-500/20">Live</span>
                     )}
                   </div>
-                  <p className="text-xs text-gray-500 font-medium">{bot.exchange} • <span className="text-purple-600 font-bold">{bot.strategy}</span></p>
+                  <p className="text-xs text-gray-500 font-medium">{bot.exchange} • <span className="text-emerald-600 font-bold">{bot.strategy}</span></p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ const BotsPage = () => {
                     >
                       {bot.status === 'Running' ? <Pause size={20} /> : <Play size={20} />}
                     </button>
-                    <button className="p-2.5 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-xl hover:bg-purple-100 dark:hover:bg-purple-600/20 hover:text-purple-600 transition-all">
+                    <button className="p-2.5 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-xl hover:bg-emerald-100 dark:hover:bg-emerald-600/20 hover:text-emerald-600 transition-all">
                       <Settings size={20} />
                     </button>
                   </>
@@ -127,7 +127,7 @@ const BotsPage = () => {
             <div className="grid grid-cols-3 gap-4 mb-6 relative z-10">
               <BotMetric label="PnL" value={bot.pnl} color={parseFloat(bot.pnl) >= 0 ? 'text-emerald-500' : 'text-rose-500'} />
               <BotMetric label="Win Rate" value={bot.winRate} color="dark:text-white text-gray-900" />
-              <BotMetric label="Health" value={`${Math.floor(bot.health)}%`} color="text-purple-600" />
+              <BotMetric label="Health" value={`${Math.floor(bot.health)}%`} color="text-emerald-600" />
             </div>
 
             <div className="pt-6 border-t dark:border-white/5 border-gray-100 flex items-center justify-between relative z-10">
@@ -140,10 +140,10 @@ const BotsPage = () => {
                  </div>
                </div>
               <div className="flex items-center gap-4">
-                <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-purple-600 transition-colors flex items-center gap-1.5">
+                <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-emerald-600 transition-colors flex items-center gap-1.5">
                   <BarChart3 size={14} /> Analytics
                 </button>
-                <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-purple-600 transition-colors flex items-center gap-1.5">
+                <button className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-emerald-600 transition-colors flex items-center gap-1.5">
                   <ShieldCheck size={14} /> Risk
                 </button>
               </div>
@@ -156,7 +156,7 @@ const BotsPage = () => {
 };
 
 const BotMetric = ({ label, value, color }: { label: string, value: string, color: string }) => (
-  <div className="dark:bg-black/20 bg-gray-50 rounded-xl p-4 border dark:border-white/5 border-gray-100 group-hover:border-purple-500/20 transition-all">
+  <div className="dark:bg-black/20 bg-gray-50 rounded-xl p-4 border dark:border-white/5 border-gray-100 group-hover:border-emerald-500/20 transition-all">
     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
     <p className={`text-sm font-black ${color} tabular-nums`}>{value}</p>
   </div>

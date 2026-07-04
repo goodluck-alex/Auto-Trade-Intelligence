@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { startAuthPopup, exchangeCodeForToken } from '../api/oauth';
+import { login as backendLogin, register as backendRegister, fetchMe, saveAuthToken, removeAuthToken, getAuthToken } from '../api/backend';
 
 export interface User {
   id: string;
@@ -14,8 +16,9 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isGuest: boolean;
   login: (email: string, password?: string) => Promise<void>;
-  register: (name: string, email: string) => Promise<void>;
+  register: (name: string, email: string, password?: string) => Promise<void>;
   verify: (code: string) => Promise<void>;
+  loginWithProvider: (provider: 'github' | 'google') => Promise<void>;
   upgradePlan: (plan: string) => void;
   logout: () => void;
   openAuthModal: (redirect?: string) => void;
@@ -32,43 +35,94 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [redirectAfterAuth, setRedirectAfterAuth] = useState<string | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem('lidex_auth');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setUser(parsed);
+    const token = getAuthToken();
+    if (!token) return;
+
+    fetchMe()
+      .then((response) => {
+        const fetchedUser = response.user;
+        setUser({
+          id: fetchedUser.id,
+          name: fetchedUser.name,
+          email: fetchedUser.email,
+          plan: fetchedUser.plan,
+          role: fetchedUser.role,
+          isVerified: fetchedUser.verified ?? true,
+        });
         setIsGuest(false);
-      } catch (e) {
-        console.error('Session restoration failed', e);
-      }
-    }
+      })
+      .catch((error) => {
+        console.warn('Failed to restore session', error);
+        removeAuthToken();
+      });
   }, []);
 
-  const login = async (email: string) => {
-    // Simulate API call
-    const isAdmin = email === 'admin@lidex.io';
-    const newUser: User = { 
-      id: '1', 
-      name: isAdmin ? 'System Admin' : 'John Doe', 
-      email, 
-      plan: isAdmin ? 'Enterprise' : 'Pro Plan',
-      role: isAdmin ? 'admin' : 'user',
-      isVerified: true
+  const login = async (email: string, password?: string) => {
+    const response = await backendLogin(email, password);
+    saveAuthToken(response.token);
+
+    const newUser: User = {
+      id: response.user.id,
+      name: response.user.name,
+      email: response.user.email,
+      plan: response.user.plan,
+      role: response.user.role,
+      isVerified: response.user.isVerified ?? true,
     };
+
     setUser(newUser);
     setIsGuest(false);
-    localStorage.setItem('lidex_auth', JSON.stringify(newUser));
     setAuthModalOpen(false);
-    
     if (redirectAfterAuth) {
-      // In a real app with react-router, we'd navigate here
       setRedirectAfterAuth(null);
     }
   };
 
-  const register = async (name: string, email: string) => {
-    console.log(`Simulating registration for ${name} (${email})`);
-    // After verification simulation, they could login
+  const loginWithProvider = async (provider: 'github' | 'google') => {
+    try {
+      const { code, verifier } = await startAuthPopup(provider);
+      const tokenRes = await exchangeCodeForToken(provider, code, verifier);
+      const profile = tokenRes.user || tokenRes;
+
+      saveAuthToken(tokenRes.access_token);
+
+      const mapped: User = {
+        id: profile.id || profile.sub || `${provider}-${profile.email}`,
+        name: profile.name || profile.login || `${provider} user`,
+        email: profile.email,
+        plan: profile.plan || 'Starter',
+        role: profile.role || 'user',
+        isVerified: profile.verified ?? true,
+      };
+
+      setUser(mapped);
+      setIsGuest(false);
+      setAuthModalOpen(false);
+    } catch (e) {
+      console.error('OAuth login failed', e);
+      alert('OAuth login failed: ' + (e instanceof Error ? e.message : String(e)));
+    }
+  };
+
+  const register = async (name: string, email: string, password?: string) => {
+    const response = await backendRegister(name, email, password);
+    saveAuthToken(response.token);
+
+    const newUser: User = {
+      id: response.user.id,
+      name: response.user.name,
+      email: response.user.email,
+      plan: response.user.plan,
+      role: response.user.role,
+      isVerified: response.user.isVerified ?? true,
+    };
+
+    setUser(newUser);
+    setIsGuest(false);
+    setAuthModalOpen(false);
+    if (redirectAfterAuth) {
+      setRedirectAfterAuth(null);
+    }
   };
 
   const verify = async (code: string) => {
@@ -85,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     setUser(null);
     setIsGuest(true);
-    localStorage.removeItem('lidex_auth');
+    removeAuthToken();
   };
 
   const openAuthModal = (redirect?: string) => {
@@ -106,6 +160,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       login, 
       register, 
       verify, 
+      loginWithProvider,
       upgradePlan,
       logout,
       openAuthModal,

@@ -65,7 +65,7 @@ function AppContent() {
   );
 
   return (
-    <div className={`min-h-screen ${theme === 'light' ? 'bg-gray-50 text-gray-900' : 'bg-[#0a0b14] text-gray-300'} font-sans selection:bg-purple-500/30 transition-colors duration-300`}>
+    <div className={`min-h-screen ${theme === 'light' ? 'bg-gray-50 text-gray-900' : 'bg-[#0a0b14] text-gray-300'} font-sans selection:bg-emerald-500/30 transition-colors duration-300`}>
       <Sidebar 
         isOpen={isSidebarOpen} 
         isMobileOpen={isMobileMenuOpen}
@@ -85,11 +85,11 @@ function AppContent() {
 
         <AuthModal />
         
-        <main className="p-4 md:p-6 pb-28 md:pb-6 space-y-6">
+        <main className="p-4 md:p-6 pb-28 md:pb-6 space-y-6 max-w-[1600px] mx-auto">
           <div className="flex items-center gap-6 overflow-x-auto pb-2 scrollbar-hide">
             <TickerItem symbol="BTC/USDT" price={prices['BTCUSDT'] || '64892.1'} change="+2.35%" color="bg-orange-500" />
             <TickerItem symbol="ETH/USDT" price={prices['ETHUSDT'] || '3512.45'} change="+1.65%" color="bg-blue-400" />
-            <TickerItem symbol="SOL/USDT" price={prices['SOLUSDT'] || '154.83'} change="+4.21%" color="bg-purple-400" />
+            <TickerItem symbol="SOL/USDT" price={prices['SOLUSDT'] || '154.83'} change="+4.21%" color="bg-emerald-400" />
             <TickerItem symbol="BNB/USDT" price={prices['BNBUSDT'] || '585.42'} change="+1.25%" color="bg-yellow-500" />
             <TickerItem symbol="XRP/USDT" price={prices['XRPUSDT'] || '0.5987'} change="+3.22%" color="bg-blue-500" />
           </div>
@@ -143,7 +143,7 @@ function MobileBottomNav({ activeTab, onNavigate }: { activeTab: string; onNavig
           <button
             key={item.path}
             onClick={() => onNavigate(item.path)}
-            className={`flex-1 flex flex-col items-center justify-center rounded-2xl py-2 transition-all ${activeTab === item.path.slice(1) ? 'bg-purple-600/15 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+            className={`flex-1 flex flex-col items-center justify-center rounded-2xl py-2 transition-all ${activeTab === item.path.slice(1) ? 'bg-emerald-600/15 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
           >
             <span className="text-lg leading-none">{item.icon}</span>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] mt-1">{item.label}</span>
@@ -157,7 +157,7 @@ function MobileBottomNav({ activeTab, onNavigate }: { activeTab: string; onNavig
 function TickerItem({ symbol, price, change, color }: { symbol: string, price: string, change: string, color: string }) {
   const formattedPrice = isNaN(parseFloat(price)) ? '---' : parseFloat(price).toLocaleString();
   return (
-    <div className="flex items-center gap-3 dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-lg px-4 py-2 min-w-fit shadow-sm">
+    <div className="ticker-pill min-w-fit">
       <div className={`w-2 h-2 rounded-full ${color}`} />
       <span className="text-sm font-bold dark:text-white text-gray-800">{symbol}</span>
       <span className="text-sm dark:text-gray-400 text-gray-500">{formattedPrice}</span>

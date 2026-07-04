@@ -28,7 +28,7 @@ const revenueData = [
 
 function AdminNavItem({ icon, label, active, onClick }: any) {
   return (
-    <button onClick={onClick} className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${active ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5'}`}>
+    <button onClick={onClick} className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${active ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5'}`}>
       {icon} {label}
     </button>
   );
@@ -36,9 +36,9 @@ function AdminNavItem({ icon, label, active, onClick }: any) {
 
 function AdminStat({ icon, label, value, change }: any) {
   return (
-    <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-5 shadow-sm">
+    <div className="card-base shadow-sm">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-600">{icon}</div>
+        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">{icon}</div>
         <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{label}</span>
       </div>
       <div className="flex items-baseline gap-2">
@@ -94,7 +94,7 @@ const AdminPage = () => {
                 <AdminStat icon={<TrendingUp size={16} />} label="Revenue (MTD)" value="$75,240" change="+15.3%" />
                 <AdminStat icon={<Activity size={16} />} label="Active Bots" value="4,820" change="+4.1%" />
               </div>
-              <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 shadow-sm">
+              <div className="card-base">
                 <h3 className="text-sm font-bold dark:text-white text-gray-900 uppercase tracking-wider mb-8">Revenue Growth</h3>
                 <div className="h-[250px]">
                   <ResponsiveContainer width="100%" height="100%">
@@ -108,7 +108,7 @@ const AdminPage = () => {
                 </div>
               </div>
             </div>
-            <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col items-center">
+            <div className="card-base flex flex-col items-center">
               <h3 className="text-sm font-bold dark:text-white text-gray-900 uppercase tracking-wider self-start mb-8">Global Exposure</h3>
               <div className="w-full h-[200px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -130,7 +130,7 @@ const AdminPage = () => {
         )}
         {activeTab === 'users' && (
           <div className="lg:col-span-3">
-             <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+             <div className="card-base overflow-hidden">
               <table className="w-full text-left">
                 <thead className="dark:bg-white/5 bg-gray-50">
                   <tr>
@@ -163,7 +163,7 @@ const AdminPage = () => {
         )}
         {activeTab === 'settings' && (
           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 shadow-sm">
+            <div className="card-base">
               <h3 className="text-sm font-bold dark:text-white text-gray-900 uppercase tracking-wider mb-6">Global Risk Rules</h3>
               <RiskControl label="Global Max Leverage" value="20x" />
               <RiskControl label="Default Risk Per Trade" value="1.0%" />

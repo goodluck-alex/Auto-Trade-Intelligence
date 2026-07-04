@@ -3,7 +3,7 @@ import { X, Mail, Lock, User, ArrowRight, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const AuthModal = () => {
-  const { authModalOpen, closeAuthModal, login, register } = useAuth();
+  const { authModalOpen, closeAuthModal, login, register, loginWithProvider } = useAuth();
   const [view, setView] = useState<'login' | 'register' | 'forgot' | 'verify'>('login');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -19,8 +19,7 @@ const AuthModal = () => {
       if (view === 'login') {
         await login(email, password);
       } else if (view === 'register') {
-        await register(name, email);
-        setView('verify');
+        await register(name, email, password);
       }
     } catch (e) {
       alert('Authentication failed');
@@ -33,7 +32,7 @@ const AuthModal = () => {
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={closeAuthModal} />
       
-      <div className="relative w-full max-w-md dark:bg-[#161723] bg-white rounded-3xl overflow-hidden shadow-2xl border dark:border-white/10 border-gray-200 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-md panel-base overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         <button onClick={closeAuthModal} className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors">
           <X size={20} />
         </button>
@@ -66,7 +65,7 @@ const AuthModal = () => {
                     onChange={(e) => setName(e.target.value)}
                     required
                     placeholder="Enter your name" 
-                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900" 
+                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900" 
                   />
                 </div>
               </div>
@@ -83,7 +82,7 @@ const AuthModal = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="name@example.com" 
-                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900" 
+                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900" 
                   />
                 </div>
               </div>
@@ -94,7 +93,7 @@ const AuthModal = () => {
                 <div className="flex justify-between items-end">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Password</label>
                   {view === 'login' && (
-                    <button type="button" onClick={() => setView('forgot')} className="text-[10px] font-bold text-purple-600 hover:underline">Forgot?</button>
+                    <button type="button" onClick={() => setView('forgot')} className="text-[10px] font-bold text-emerald-600 hover:underline">Forgot?</button>
                   )}
                 </div>
                 <div className="relative">
@@ -105,7 +104,7 @@ const AuthModal = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     placeholder="••••••••" 
-                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900" 
+                    className="w-full pl-12 pr-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900" 
                   />
                 </div>
               </div>
@@ -118,7 +117,7 @@ const AuthModal = () => {
                   type="text" 
                   placeholder="Enter 6-digit code" 
                   maxLength={6}
-                  className="w-full px-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900 text-center tracking-[1em] font-black text-xl" 
+                  className="w-full px-5 py-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-black/20 focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900 text-center tracking-[1em] font-black text-xl" 
                 />
               </div>
             )}
@@ -126,7 +125,7 @@ const AuthModal = () => {
             <button 
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 mt-4"
+              className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 mt-4"
             >
               {loading ? 'Processing...' : (
                 <>
@@ -152,10 +151,10 @@ const AuthModal = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border dark:border-white/10 border-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm font-bold dark:text-white text-gray-900">
+                <button onClick={() => loginWithProvider('github')} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border dark:border-white/10 border-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm font-bold dark:text-white text-gray-900">
                    GitHub
                 </button>
-                <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border dark:border-white/10 border-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm font-bold dark:text-white text-gray-900">
+                <button onClick={() => loginWithProvider('google')} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border dark:border-white/10 border-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-sm font-bold dark:text-white text-gray-900">
                   Google
                 </button>
               </div>
@@ -168,7 +167,7 @@ const AuthModal = () => {
             </span>
             <button 
               onClick={() => setView(view === 'login' ? 'register' : 'login')}
-              className="ml-2 text-purple-600 font-black hover:underline"
+              className="ml-2 text-emerald-600 font-black hover:underline"
             >
               {view === 'login' ? 'Register' : 'Sign In'}
             </button>

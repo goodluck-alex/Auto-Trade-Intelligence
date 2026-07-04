@@ -34,7 +34,7 @@ const LegalPage = () => {
               onClick={() => setActiveTab(p.id)}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
                 activeTab === p.id 
-                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' 
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' 
                 : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5'
               }`}
             >
@@ -49,7 +49,7 @@ const LegalPage = () => {
 
         {/* Content Area */}
         <div className="md:col-span-3">
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-3xl p-8 shadow-sm">
+          <div className="card-base">
             {activeTab === 'terms' && <ContentSection title="Terms & Conditions" content={TERMS_CONTENT} />}
             {activeTab === 'privacy' && <ContentSection title="Privacy Policy" content={PRIVACY_CONTENT} />}
             {activeTab === 'cookies' && <ContentSection title="Cookies Policy" content={COOKIES_CONTENT} />}

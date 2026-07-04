@@ -98,7 +98,7 @@ const MarketChart: React.FC<MarketChartProps> = ({ symbol, timeframe }) => {
     <div className="relative w-full">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white/5 backdrop-blur-sm z-10 rounded-2xl">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div>
         </div>
       )}
       <div ref={chartContainerRef} />

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OAuth Callback</title>
+  </head>
+  <body>
+    <script>
+      (function(){
+        try {
+          const params = {};
+          const search = window.location.search.substring(1);
+          search.split('&').forEach(pair => {
+            if (!pair) return;
+            const [k,v] = pair.split('=');
+            params[decodeURIComponent(k)] = decodeURIComponent(v || '');
+          });
+          if (window.opener) {
+            window.opener.postMessage({ type: 'oauth_callback', params }, window.location.origin);
+          }
+        } catch (e) {
+          console.error(e);
+        } finally {
+          window.close();
+        }
+      })();
+    </script>
+  </body>
+</html>

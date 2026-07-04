@@ -4,7 +4,7 @@ import ReferralWithdrawalModal from './ReferralWithdrawalModal';
 
 function StatItem({ icon, label, value, change }: any) {
   return (
-    <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-100 rounded-2xl p-5 shadow-sm">
+    <div className="card-base shadow-sm">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-xl dark:bg-white/5 bg-gray-50 flex items-center justify-center text-gray-400">
           {icon}
@@ -12,7 +12,7 @@ function StatItem({ icon, label, value, change }: any) {
         <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{label}</span>
       </div>
       <p className="text-2xl font-black dark:text-white text-gray-900 mb-1">{value}</p>
-      <p className="text-[10px] font-bold text-purple-600">{change}</p>
+      <p className="text-[10px] font-bold text-emerald-600">{change}</p>
     </div>
   );
 }
@@ -22,7 +22,7 @@ function RankingItem({ rank, name, earnings }: { rank: number, name: string, ear
     <div className="flex items-center justify-between group">
       <div className="flex items-center gap-3">
         <span className={`text-xs font-black w-5 ${rank === 1 ? 'text-yellow-500' : rank === 2 ? 'text-gray-400' : 'text-orange-400'}`}>#{rank}</span>
-        <span className="text-xs font-bold dark:text-gray-300 text-gray-600 group-hover:text-purple-600 transition-colors">{name}</span>
+        <span className="text-xs font-bold dark:text-gray-300 text-gray-600 group-hover:text-emerald-600 transition-colors">{name}</span>
       </div>
       <span className="text-xs font-black dark:text-white text-gray-900">{earnings}</span>
     </div>
@@ -56,7 +56,7 @@ const ReferralsPage = () => {
           </div>
           <button 
             onClick={() => isGuest ? openAuthModal('/referrals') : setIsWithdrawOpen(true)}
-            className="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 rounded-xl text-sm font-bold text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+            className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 rounded-xl text-sm font-bold text-white hover:shadow-lg hover:shadow-emerald-500/20 transition-all"
           >
             Withdraw Earnings
           </button>
@@ -72,23 +72,23 @@ const ReferralsPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 shadow-sm">
+          <div className="card-base">
             <h3 className="text-sm font-bold dark:text-white text-gray-900 uppercase tracking-wider mb-6">Your Referral Links</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="flex-1 dark:bg-black/30 bg-gray-50 border dark:border-white/10 border-gray-200 rounded-xl p-3 flex items-center justify-between">
                   <span className="text-sm text-gray-400 font-mono">lidex.io/join/REF-849201</span>
-                  <button className="p-2 hover:bg-white/5 rounded-lg text-purple-600 transition-colors">
+                  <button className="p-2 hover:bg-white/5 rounded-lg text-emerald-600 transition-colors">
                     <Copy size={18} />
                   </button>
                 </div>
-                <button className="p-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all">
+                <button className="p-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all">
                   <Share2 size={18} />
                 </button>
               </div>
             </div>
           </div>
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 shadow-sm">
+          <div className="card-base">
             <h3 className="text-sm font-bold dark:text-white text-gray-900 uppercase tracking-wider mb-6">Network Ranking</h3>
             <div className="space-y-6">
               <RankingItem rank={1} name="Sarah Trading" earnings="$142,500" />

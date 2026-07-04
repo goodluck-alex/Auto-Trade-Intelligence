@@ -43,7 +43,7 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={onClose} />
       
-      <div className="relative w-full max-w-md dark:bg-[#161723] bg-white rounded-3xl overflow-hidden shadow-2xl border dark:border-white/10 border-gray-200">
+      <div className="relative w-full max-w-md panel-base overflow-hidden">
         <button onClick={onClose} className="absolute top-6 right-6 p-2 text-gray-400 hover:text-white transition-colors">
           <X size={20} />
         </button>
@@ -52,11 +52,11 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Send className="text-purple-500" size={32} />
+                <div className="w-16 h-16 bg-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Send className="text-emerald-500" size={32} />
                 </div>
                 <h2 className="text-2xl font-black dark:text-white text-gray-900">Withdraw Earnings</h2>
-                <p className="text-gray-500 text-sm mt-1">Available: <span className="font-bold text-purple-600">${balance.toLocaleString()}</span></p>
+                <p className="text-gray-500 text-sm mt-1">Available: <span className="font-bold text-emerald-600">${balance.toLocaleString()}</span></p>
               </div>
 
               <div className="space-y-4">
@@ -68,9 +68,9 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                       placeholder="Min. 10.00" 
-                      className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-purple-500 transition-all font-bold dark:text-white text-gray-900" 
+                      className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold dark:text-white text-gray-900" 
                     />
-                    <button onClick={() => setAmount(balance.toString())} className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-purple-600 uppercase">Max</button>
+                    <button onClick={() => setAmount(balance.toString())} className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-emerald-600 uppercase">Max</button>
                   </div>
                 </div>
 
@@ -81,7 +81,7 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="Enter wallet address" 
-                    className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900 font-mono" 
+                    className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900 font-mono" 
                   />
                 </div>
 
@@ -92,7 +92,7 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
                       <button 
                         key={n.name}
                         onClick={() => setNetwork(n)}
-                        className={`p-3 rounded-xl border text-[10px] font-bold transition-all ${network.name === n.name ? 'bg-purple-600 border-purple-500 text-white shadow-lg shadow-purple-500/20' : 'bg-gray-50 dark:bg-white/5 border-gray-100 dark:border-white/5 text-gray-500 hover:border-purple-500/50'}`}
+                        className={`p-3 rounded-xl border text-[10px] font-bold transition-all ${network.name === n.name ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-500/20' : 'bg-gray-50 dark:bg-white/5 border-gray-100 dark:border-white/5 text-gray-500 hover:border-emerald-500/50'}`}
                       >
                         {n.name}
                       </button>
@@ -115,7 +115,7 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
               <button 
                 onClick={handleWithdraw}
                 disabled={isProcessing}
-                className="w-full py-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-bold rounded-2xl transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2"
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-400 text-white font-bold rounded-2xl transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2"
               >
                 {isProcessing ? "Processing..." : "Confirm Withdrawal"} <ShieldCheck size={18} />
               </button>
@@ -129,7 +129,7 @@ const ReferralWithdrawalModal = ({ isOpen, onClose, balance }: WithdrawalModalPr
               </div>
               <div className="space-y-2">
                 <h2 className="text-2xl font-black dark:text-white text-gray-900">Withdrawal Initiated</h2>
-                <p className="text-gray-500 text-sm">Transfer of {receiveAmount.toFixed(2)} USDT is being processed. TxID: <span className="font-mono text-purple-500">0x84f…92</span></p>
+                <p className="text-gray-500 text-sm">Transfer of {receiveAmount.toFixed(2)} USDT is being processed. TxID: <span className="font-mono text-emerald-500">0x84f…92</span></p>
               </div>
               <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl flex items-start gap-3 text-left">
                 <AlertCircle size={16} className="text-blue-500 shrink-0" />

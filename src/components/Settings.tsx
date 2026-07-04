@@ -11,14 +11,14 @@ const ProfileInput = ({ label, value, onChange, placeholder }: any) => (
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs font-bold focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900" 
+      className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs font-bold focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900" 
     />
   </div>
 );
 
 const SettingsNav = ({ icon, label, active = false }: any) => (
-  <button className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all group ${active ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5'}`}>
-    <span className={active ? 'text-white' : 'group-hover:text-purple-500'}>{icon}</span>
+  <button className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all group ${active ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5'}`}>
+    <span className={active ? 'text-white' : 'group-hover:text-emerald-500'}>{icon}</span>
     <span className="text-xs font-black uppercase tracking-wider">{label}</span>
   </button>
 );
@@ -74,7 +74,7 @@ const SettingsPage = () => {
         </div>
 
         <div className="md:col-span-2 space-y-6">
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-3xl p-8 shadow-sm">
+          <div className="card-base">
             <h3 className="text-sm font-black dark:text-white text-gray-900 uppercase tracking-wider mb-8">Personal Details</h3>
             <div className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -86,7 +86,7 @@ const SettingsPage = () => {
                   <select 
                     value={profile.country} 
                     onChange={(e) => setProfile({...profile, country: e.target.value})}
-                    className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-purple-500 transition-all dark:text-white text-gray-900 font-bold"
+                    className="w-full bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-200 rounded-2xl px-5 py-4 text-xs focus:outline-none focus:border-emerald-500 transition-all dark:text-white text-gray-900 font-bold"
                   >
                     <option>United Kingdom</option>
                     <option>United States</option>
@@ -96,7 +96,7 @@ const SettingsPage = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <button onClick={handleSaveProfile} className="flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-2xl text-xs font-black uppercase text-white transition-all shadow-lg shadow-purple-500/20">
+                <button onClick={handleSaveProfile} className="flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 rounded-2xl text-xs font-black uppercase text-white transition-all shadow-lg shadow-emerald-500/20">
                   <Save size={18} /> Update Profile
                 </button>
                 <button className="flex items-center gap-2 px-8 py-4 bg-gray-100 dark:bg-white/5 dark:text-white text-gray-900 rounded-2xl text-xs font-black uppercase border border-transparent hover:border-gray-200 dark:hover:border-white/10 transition-all">
@@ -106,12 +106,12 @@ const SettingsPage = () => {
             </div>
           </div>
 
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-3xl p-8 shadow-sm">
+          <div className="card-base">
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-sm font-black dark:text-white text-gray-900 uppercase tracking-wider">Exchange API Management</h3>
               <button 
                 onClick={handleAddKey}
-                className="text-xs font-black text-purple-600 uppercase tracking-widest hover:text-purple-700 transition-colors"
+                className="text-xs font-black text-emerald-600 uppercase tracking-widest hover:text-emerald-700 transition-colors"
               >
                 + Add New Key
               </button>
@@ -131,7 +131,7 @@ const SettingsPage = () => {
                   <div className="flex items-center gap-3">
                     <button 
                       onClick={() => handleTestConnection(key.id)}
-                      className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all ${testingId === key.id ? 'bg-purple-100 text-purple-600 animate-pulse' : 'bg-white dark:bg-white/5 text-gray-500 hover:text-emerald-600 shadow-sm'}`}
+                      className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all ${testingId === key.id ? 'bg-emerald-100 text-emerald-600 animate-pulse' : 'bg-white dark:bg-white/5 text-gray-500 hover:text-emerald-600 shadow-sm'}`}
                     >
                       {testingId === key.id ? 'Testing...' : 'Test Sync'}
                     </button>

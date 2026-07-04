@@ -29,7 +29,7 @@ const TradeHistory = () => {
         </div>
       </div>
 
-      <div className="bg-[#161723] border border-white/5 rounded-3xl overflow-hidden">
+      <div className="card-base overflow-hidden">
         <div className="p-4 sm:p-6 bg-white/[0.02] border-b border-white/5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="relative w-full sm:w-auto">
@@ -37,7 +37,7 @@ const TradeHistory = () => {
               <input
                 type="text"
                 placeholder="Search market or bot..."
-                className="w-full sm:w-64 bg-black/20 border border-white/5 rounded-2xl pl-10 pr-4 py-2 text-xs text-gray-200 focus:outline-none focus:border-purple-500/50 transition-all"
+                className="w-full sm:w-64 bg-black/20 border border-white/5 rounded-2xl pl-10 pr-4 py-2 text-xs text-gray-200 focus:outline-none focus:border-emerald-500/50 transition-all"
               />
             </div>
             <button className="flex items-center gap-2 px-4 py-3 sm:py-2 bg-black/20 border border-white/5 rounded-2xl text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-all">
@@ -77,7 +77,7 @@ const TradeHistory = () => {
                   <p className="text-sm text-white">{item.date}</p>
                 </div>
               </div>
-              <button className="mt-4 w-full py-3 text-sm font-bold uppercase tracking-[0.2em] text-purple-400 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">View Details</button>
+              <button className="mt-4 w-full py-3 text-sm font-bold uppercase tracking-[0.2em] text-emerald-400 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">View Details</button>
             </div>
           ))}
         </div>
@@ -128,7 +128,7 @@ const TradeHistory = () => {
                     <span className="text-xs text-gray-500 font-medium">{item.date}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <button className="p-2 text-gray-600 hover:text-purple-400 transition-colors">
+                    <button className="p-2 text-gray-600 hover:text-emerald-400 transition-colors">
                       <ExternalLink size={16} />
                     </button>
                   </td>
@@ -146,7 +146,7 @@ const TradeHistory = () => {
             {[1, 2, 3, '...', 12].map((n, i) => (
               <button
                 key={i}
-                className={`w-8 h-8 rounded-lg text-xs font-bold transition-all ${n === 1 ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'text-gray-500 hover:text-white'}`}>
+                className={`w-8 h-8 rounded-lg text-xs font-bold transition-all ${n === 1 ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-gray-500 hover:text-white'}`}>
                 {n}
               </button>
             ))}

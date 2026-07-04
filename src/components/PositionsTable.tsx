@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MoreHorizontal } from 'lucide-react';
 import { usePrices } from '../context/PriceContext';
 
@@ -11,6 +12,7 @@ const initialPositions = [
 ];
 
 const PositionsTable = () => {
+  const navigate = useNavigate();
   const { prices } = usePrices();
 
   const calculatePnL = (pos: any) => {
@@ -30,13 +32,13 @@ const PositionsTable = () => {
   };
 
   return (
-    <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+    <div className="card-base overflow-hidden">
       <div className="p-4 sm:p-6 border-b dark:border-white/5 border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h3 className="text-base sm:text-lg font-bold dark:text-white text-gray-900 uppercase tracking-wider">Open Positions</h3>
           <p className="text-[11px] text-gray-500 mt-1">Live positions updated in real time.</p>
         </div>
-        <button className="text-xs sm:text-sm font-bold text-gray-500 hover:text-purple-600 transition-colors">View All Positions</button>
+        <button className="text-xs sm:text-sm font-bold text-gray-500 hover:text-emerald-600 transition-colors">View All Positions</button>
       </div>
 
       <div className="block xl:hidden p-4 space-y-4">
@@ -126,8 +128,8 @@ const PositionsTable = () => {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-purple-600/20 flex items-center justify-center">
-                        <div className="w-1 h-1 bg-purple-500 rounded-full" />
+                      <div className="w-5 h-5 rounded-full bg-emerald-600/20 flex items-center justify-center">
+                        <div className="w-1 h-1 bg-emerald-500 rounded-full" />
                       </div>
                       <span className="text-xs font-medium text-gray-500">{pos.bot}</span>
                     </div>
@@ -136,7 +138,7 @@ const PositionsTable = () => {
                     <span className="text-xs font-medium text-gray-500">{pos.exchange}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <button className="p-1 hover:bg-gray-100 dark:hover:bg-white/10 rounded transition-colors text-gray-400 hover:text-purple-600">
+                    <button className="p-1 hover:bg-gray-100 dark:hover:bg-white/10 rounded transition-colors text-gray-400 hover:text-emerald-600">
                       <MoreHorizontal size={16} />
                     </button>
                   </td>
@@ -147,7 +149,7 @@ const PositionsTable = () => {
         </table>
       </div>
       <div className="p-4 border-t dark:border-white/5 border-gray-100 flex justify-center">
-        <button className="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-purple-600 transition-colors">
+        <button onClick={() => navigate('/history')} className="text-[10px] font-bold text-gray-400 uppercase tracking-widest hover:text-emerald-600 transition-colors">
           View All Positions
         </button>
       </div>

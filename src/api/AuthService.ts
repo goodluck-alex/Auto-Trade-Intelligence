@@ -55,6 +55,31 @@ export const AuthService = {
     return user;
   },
 
+  // Simulate OAuth login/register with external providers (GitHub, Google)
+  loginWithProvider: async (provider: 'github' | 'google', profile?: { email?: string; name?: string }): Promise<User> => {
+    const users = AuthService.getUsers();
+    const email = profile?.email || `${provider}_user@local.${provider}.local`;
+    let user = users.find(u => u.email === email);
+
+    if (!user) {
+      // create a new user from provider profile
+      user = {
+        id: Math.random().toString(36).substr(2, 9),
+        email,
+        name: profile?.name || `${provider} user`,
+        role: email === 'admin@lidex.io' ? 'admin' : 'user',
+        plan: 'Starter',
+        mfaEnabled: false,
+        verified: true,
+        ...(profile || {})
+      } as User;
+      localStorage.setItem(USERS_KEY, JSON.stringify([...users, user]));
+    }
+
+    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    return user;
+  },
+
   updateProfile: async (data: Partial<User>) => {
     const current = JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || '{}');
     const updated = { ...current, ...data };

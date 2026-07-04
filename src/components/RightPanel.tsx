@@ -39,7 +39,7 @@ const RightPanel = ({ inline }: { inline?: boolean }) => {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Exchange Accounts</h3>
-          <button className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">View All</button>
+          <button className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">View All</button>
         </div>
         <div className="space-y-2">
           {exchanges.map((ex, idx) => (
@@ -48,7 +48,7 @@ const RightPanel = ({ inline }: { inline?: boolean }) => {
                 <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center">
                   <div className={`w-1.5 h-1.5 rounded-full ${idx === 0 ? 'bg-yellow-500' : 'bg-blue-500'}`} />
                 </div>
-                <span className="text-xs font-bold text-white group-hover:text-purple-400 transition-colors">{ex.name}</span>
+                <span className="text-xs font-bold text-white group-hover:text-emerald-400 transition-colors">{ex.name}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-bold text-emerald-400">{ex.status}</span>
@@ -69,13 +69,13 @@ const RightPanel = ({ inline }: { inline?: boolean }) => {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Top Bots</h3>
-          <button className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">View All</button>
+          <button className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">View All</button>
         </div>
         <div className="space-y-4">
           {topBots.map((bot, idx) => (
             <div key={idx} className="flex items-center justify-between group">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-purple-600/10 flex items-center justify-center text-purple-400">
+                <div className="w-8 h-8 rounded-lg bg-emerald-600/10 flex items-center justify-center text-emerald-400">
                   <TrendingUp size={16} />
                 </div>
                 <div>
@@ -101,7 +101,7 @@ const RightPanel = ({ inline }: { inline?: boolean }) => {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Recent Trades</h3>
-          <button className="text-[10px] font-bold text-purple-400 uppercase tracking-wider">View All</button>
+          <button className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">View All</button>
         </div>
         <div className="space-y-4">
           {recentTrades.map((trade, idx) => (

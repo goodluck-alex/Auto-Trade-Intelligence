@@ -16,10 +16,10 @@ const SecurityPage = () => {
         {/* Security Summary */}
         <div className="lg:col-span-2 space-y-6">
           {/* 2FA Section */}
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-100 rounded-3xl p-8 shadow-sm">
+          <div className="card-base">
             <div className="flex items-start justify-between mb-8">
               <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                   <Shield size={24} />
                 </div>
                 <div>
@@ -30,18 +30,18 @@ const SecurityPage = () => {
               <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 text-[10px] font-black uppercase rounded-full border border-emerald-500/20">Active</span>
             </div>
             <div className="space-y-4">
-               <button className="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-100 rounded-2xl group hover:border-purple-500 transition-all">
+               <button className="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-black/20 border dark:border-white/10 border-gray-100 rounded-2xl group hover:border-emerald-500 transition-all">
                   <div className="flex items-center gap-3">
-                     <Smartphone className="text-gray-400 group-hover:text-purple-500" size={20} />
+                     <Smartphone className="text-gray-400 group-hover:text-emerald-500" size={20} />
                      <span className="text-sm font-bold dark:text-gray-200">Google Authenticator</span>
                   </div>
-                  <span className="text-xs text-purple-600 font-bold">Configure</span>
+                  <span className="text-xs text-emerald-600 font-bold">Configure</span>
                </button>
             </div>
           </div>
 
           {/* Login History */}
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-100 rounded-3xl p-8 shadow-sm">
+          <div className="card-base">
             <h3 className="text-sm font-black dark:text-white text-gray-900 uppercase tracking-wider mb-6 flex items-center gap-2">
                <History size={18} className="text-gray-400" /> Device & Login History
             </h3>
@@ -55,7 +55,7 @@ const SecurityPage = () => {
 
         {/* Security Resources */}
         <div className="space-y-6">
-          <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-100 rounded-3xl p-6 shadow-sm">
+          <div className="card-base">
              <h3 className="text-xs font-black dark:text-white text-gray-900 uppercase tracking-widest mb-6">Security Checklist</h3>
              <div className="space-y-4">
                 <CheckItem label="Email Verified" active />

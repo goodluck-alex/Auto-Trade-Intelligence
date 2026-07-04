@@ -36,15 +36,15 @@ const RiskMetric = ({ label, value }: { label: string, value: string }) => (
 export const StatCard = ({ label, value, change, subLabel, icon }: any) => {
   const icons: any = {
     balance: <Wallet className="text-blue-500" size={20} />,
-    equity: <Target className="text-purple-500" size={20} />,
+    equity: <Target className="text-emerald-500" size={20} />,
     daily: <Activity className="text-orange-500" size={20} />,
     monthly: <TrendingUp className="text-emerald-500" size={20} />,
     positions: <Layers className="text-blue-600" size={20} />,
-    bots: <Cpu className="text-purple-600" size={20} />,
+    bots: <Cpu className="text-emerald-600" size={20} />,
   };
 
   return (
-    <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-4 hover:border-purple-500/30 transition-all group shadow-sm">
+    <div className="card-base group hover:border-emerald-500/30">
       <div className="flex items-center gap-3 mb-3">
         <div className="w-10 h-10 rounded-xl dark:bg-white/5 bg-gray-50 flex items-center justify-center group-hover:scale-110 transition-transform">
           {icons[icon]}
@@ -74,7 +74,7 @@ export const PerformanceChart = () => {
   const [timeframe, setTimeframe] = React.useState('1H');
 
   return (
-    <div className="dark:bg-[#161723] bg-white border dark:border-white/5 border-gray-200 rounded-2xl p-6 h-[500px] flex flex-col shadow-sm">
+    <div className="card-base min-h-[420px] flex flex-col">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <h3 className="text-sm font-black dark:text-white text-gray-900 uppercase tracking-wider">Live Market Analysis</h3>
@@ -88,7 +88,7 @@ export const PerformanceChart = () => {
               <button 
                 key={t} 
                 onClick={() => setTimeframe(t)}
-                className={`px-3 py-1 text-[10px] font-black rounded-lg transition-all ${t === timeframe ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/20' : 'text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
+                className={`px-3 py-1 text-[10px] font-black rounded-lg transition-all ${t === timeframe ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' : 'text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
               >
                 {t}
               </button>
@@ -97,7 +97,7 @@ export const PerformanceChart = () => {
           <button className="flex items-center gap-2 px-3 py-1.5 dark:bg-[#1f202c] bg-gray-50 border dark:border-white/5 border-gray-100 rounded-lg text-xs font-bold text-gray-500">
             BTC/USDT <ChevronDown size={14} />
           </button>
-          <Maximize2 size={16} className="text-gray-400 hover:text-purple-500 cursor-pointer transition-colors" />
+          <Maximize2 size={16} className="text-gray-400 hover:text-emerald-500 cursor-pointer transition-colors" />
         </div>
       </div>
 
@@ -120,16 +120,16 @@ export const MarketIntelligence = () => {
   ];
 
   return (
-    <div className="bg-[#161723] border border-white/5 rounded-2xl p-6 h-[400px]">
+    <div className="card-base min-h-[400px]">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-sm font-bold text-white uppercase tracking-wider">Market Intelligence</h3>
-        <button className="text-[10px] font-bold text-purple-400 hover:text-purple-300 transition-colors uppercase">View All</button>
+        <button className="text-[10px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors uppercase">View All</button>
       </div>
       <div className="space-y-4">
         {items.map((item, idx) => (
           <div key={idx} className="flex items-center justify-between group cursor-default">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 group-hover:bg-purple-500/10 group-hover:text-purple-400 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 group-hover:bg-emerald-500/10 group-hover:text-emerald-400 transition-all">
                 {item.icon}
               </div>
               <span className="text-xs text-gray-400">{item.label}</span>
@@ -145,7 +145,7 @@ export const MarketIntelligence = () => {
 // --- Portfolio Risk ---
 export const PortfolioRisk = () => {
   return (
-    <div className="bg-[#161723] border border-white/5 rounded-2xl p-5 flex flex-col items-center text-center">
+    <div className="card-base flex flex-col items-center text-center">
       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-6 self-start">Portfolio Risk</h3>
       <div className="relative w-32 h-32 mb-6">
         <svg className="w-full h-full transform -rotate-90">
@@ -178,7 +178,7 @@ const assetData = [
 
 export const AssetAllocation = () => {
   return (
-    <div className="bg-[#161723] border border-white/5 rounded-2xl p-5 flex flex-col items-center">
+    <div className="card-base flex flex-col items-center">
       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-6 self-start">Asset Allocation</h3>
       <div className="w-32 h-32 mb-6">
         <ResponsiveContainer width="100%" height="100%">
@@ -215,7 +215,7 @@ export const AssetAllocation = () => {
 // --- Risk Summary ---
 export const RiskSummary = () => {
   return (
-    <div className="bg-[#161723] border border-white/5 rounded-2xl p-5">
+    <div className="card-base">
       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-6">Risk Summary</h3>
       <div className="space-y-4">
         <RiskMetric label="Max Daily Loss" value="5.00%" />
@@ -236,7 +236,7 @@ const botData = [
 
 export const BotStatus = () => {
   return (
-    <div className="bg-[#161723] border border-white/5 rounded-2xl p-5 flex flex-col items-center">
+    <div className="card-base flex flex-col items-center">
       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-6 self-start">Bot Status</h3>
       <div className="w-32 h-32 mb-6">
         <ResponsiveContainer width="100%" height="100%">

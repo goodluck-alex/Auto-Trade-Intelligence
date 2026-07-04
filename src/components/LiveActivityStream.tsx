@@ -60,7 +60,7 @@ const LogIcon = ({ type }: { type: string }) => {
   switch (type) {
     case 'risk': return <ShieldCheck size={12} className="text-rose-500 shrink-0" />;
     case 'scan': return <Search size={12} className="text-blue-500 shrink-0" />;
-    case 'intel': return <BarChart size={12} className="text-purple-500 shrink-0" />;
+    case 'intel': return <BarChart size={12} className="text-emerald-500 shrink-0" />;
     case 'execute': return <Zap size={12} className="text-amber-500 shrink-0" />;
     case 'learn': return <Target size={12} className="text-emerald-500 shrink-0" />;
     default: return <Terminal size={12} className="text-gray-500 shrink-0" />;
