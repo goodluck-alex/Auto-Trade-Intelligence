@@ -59,13 +59,28 @@ export async function startAuthPopup(provider: Provider) {
   });
 }
 
+function resolveBackendEndpoint(endpoint: string) {
+  if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
+    return endpoint;
+  }
+  const apiBase = getEnv('VITE_API_BASE_URL');
+  if (!apiBase) {
+    return endpoint;
+  }
+  const base = apiBase.replace(/\/$/, '');
+  const path = endpoint.replace(/^\//, '');
+  return `${base}/${path}`;
+}
+
 export async function exchangeCodeForToken(provider: Provider, code: string, verifier: string) {
   const backendTokenEndpoint = getEnv('VITE_OAUTH_TOKEN_ENDPOINT');
   if (!backendTokenEndpoint) {
     throw new Error('Missing VITE_OAUTH_TOKEN_ENDPOINT environment variable');
   }
 
-  const res = await fetch(backendTokenEndpoint, {
+  const endpoint = resolveBackendEndpoint(backendTokenEndpoint);
+
+  const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ provider, code, code_verifier: verifier, redirect_uri: window.location.origin + REDIRECT_PATH })

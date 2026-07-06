@@ -90,24 +90,24 @@ Supported frontend environment variables:
 
 ```env
 VITE_BINANCE_API=https://api.binance.com
-VITE_ENABLE_MOCK=true
-VITE_APP_ENV=development
-VITE_APP_TITLE="Lidex Auto Trade"
+VITE_ENABLE_MOCK=false
+VITE_APP_ENV=production
+VITE_APP_TITLE="Lidex"
 VITE_PRIMARY_COLOR=emerald
 VITE_STORAGE_PREFIX=lidex_v1_
+VITE_API_BASE_URL=https://auto-trade-backend-lpsb.onrender.com
+VITE_OAUTH_TOKEN_ENDPOINT=https://auto-trade-backend-lpsb.onrender.com/oauth/exchange
+VITE_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+VITE_GITHUB_CLIENT_ID=your-github-client-id
 ```
 
 Recommended production variables to add for backend and auth integration:
 
 ```env
-VITE_API_BASE_URL=https://api.yourdomain.com/v1
-VITE_WS_URL=wss://stream.yourdomain.com
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=1234567890
-FIREBASE_APP_ID=1:1234567890:web:abcdef123456
+VITE_API_BASE_URL=https://auto-trade-backend-lpsb.onrender.com
+VITE_OAUTH_TOKEN_ENDPOINT=https://auto-trade-backend-lpsb.onrender.com/oauth/exchange
+VITE_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+VITE_GITHUB_CLIENT_ID=your-github-client-id
 ```
 
 ---

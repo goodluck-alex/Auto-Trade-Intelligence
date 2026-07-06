@@ -4,7 +4,7 @@ OAuth setup
 
   VITE_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
   VITE_GITHUB_CLIENT_ID=your-github-client-id
-  VITE_OAUTH_TOKEN_ENDPOINT=https://your-backend.example.com/oauth/exchange  # optional but required for GitHub
+  VITE_OAUTH_TOKEN_ENDPOINT=https://auto-trade-backend-lpsb.onrender.com/oauth/exchange
 
 Notes:
 - Google: the PKCE flow and token exchange can run from the browser with the Google token endpoint.
