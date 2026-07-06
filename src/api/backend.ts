@@ -8,13 +8,20 @@ export interface BackendUser {
   provider?: string;
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+function getEnv(key: string): string | undefined {
+  // Prefer Vite env vars, but allow a runtime override if needed.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (import.meta as any).env?.[key] || (window as any).__env__?.[key];
+}
+
+const API_BASE_URL = getEnv('VITE_API_BASE_URL') || '';
 const AUTH_TOKEN_KEY = 'lidex_auth_token';
 
 function getUrl(path: string) {
   const base = API_BASE_URL.replace(/\/$/, '');
   if (!base) return path;
-  return `${base}${path}`;
+  const trimmed = path.replace(/^\//, '');
+  return `${base}/${trimmed}`;
 }
 
 async function handleResponse(res: Response) {
