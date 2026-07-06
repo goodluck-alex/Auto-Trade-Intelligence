@@ -106,9 +106,20 @@ Recommended production variables to add for backend and auth integration:
 ```env
 VITE_API_BASE_URL=https://auto-trade-backend-lpsb.onrender.com
 VITE_OAUTH_TOKEN_ENDPOINT=https://auto-trade-backend-lpsb.onrender.com/oauth/exchange
+VITE_OAUTH_REDIRECT_URI=https://your-frontend-domain.com/oauth-callback.html
 VITE_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
 VITE_GITHUB_CLIENT_ID=your-github-client-id
 ```
+
+### Google OAuth redirect URI
+Be sure the redirect URI registered in the Google console matches exactly the value of `VITE_OAUTH_REDIRECT_URI`.
+For example, if your frontend is deployed at `https://auto-trade-frontend.onrender.com`, register:
+
+```text
+https://auto-trade-frontend.onrender.com/oauth-callback.html
+```
+
+If you are deploying the frontend to the same domain as the backend, use the absolute URL to the static callback page.
 
 ---
 

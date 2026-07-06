@@ -11,6 +11,15 @@ function getEnv(key: string): string | undefined {
   return (import.meta as any).env?.[key] || (window as any).__env__?.[key];
 }
 
+function resolveRedirectUri() {
+  const override = getEnv('VITE_OAUTH_REDIRECT_URI');
+  if (override) {
+    return override;
+  }
+
+  return window.location.origin + REDIRECT_PATH;
+}
+
 export async function startAuthPopup(provider: Provider) {
   const clientIdKey = provider === 'github' ? 'VITE_GITHUB_CLIENT_ID' : 'VITE_GOOGLE_CLIENT_ID';
   const clientId = getEnv(clientIdKey);
@@ -20,7 +29,7 @@ export async function startAuthPopup(provider: Provider) {
   const challenge = await generateCodeChallenge(verifier);
   const state = Math.random().toString(36).substr(2, 9);
 
-  const redirectUri = window.location.origin + REDIRECT_PATH;
+  const redirectUri = resolveRedirectUri();
 
   let authUrl = '';
   if (provider === 'google') {
