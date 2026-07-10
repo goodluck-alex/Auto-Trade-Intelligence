@@ -8,6 +8,9 @@ OAuth setup
 
 Notes:
 - Google: the PKCE flow and token exchange can run from the browser with the Google token endpoint.
+- In Google Cloud Console, add the exact authorized redirect URIs for every environment you use:
+  - http://localhost:5173/oauth-callback.html
+  - https://your-frontend-domain.com/oauth-callback.html
 - GitHub: GitHub's token endpoint is not CORS-friendly for direct browser requests. Provide a backend endpoint that accepts `{ provider, code, code_verifier, redirect_uri }` and performs the token exchange server-side with the client secret, then returns `{ access_token, user }` or at least `{ user }`.
 
 Minimal backend example (Node/Express):
