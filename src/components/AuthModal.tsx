@@ -22,7 +22,7 @@ const AuthModal = () => {
         await register(name, email, password);
       }
     } catch (e) {
-      alert('Authentication failed');
+      alert('Authentication failed: ' + (e instanceof Error ? e.message : String(e)));
     } finally {
       setLoading(false);
     }

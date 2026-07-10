@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           email: fetchedUser.email,
           plan: fetchedUser.plan,
           role: fetchedUser.role,
-          isVerified: fetchedUser.verified ?? true,
+          isVerified: fetchedUser.isVerified ?? fetchedUser.verified ?? true,
         });
         setIsGuest(false);
       })
@@ -67,7 +67,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email: response.user.email,
       plan: response.user.plan,
       role: response.user.role,
-      isVerified: response.user.isVerified ?? true,
+      isVerified: response.user.isVerified ?? response.user.verified ?? true,
     };
 
     setUser(newUser);
@@ -92,7 +92,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         email: profile.email,
         plan: profile.plan || 'Starter',
         role: profile.role || 'user',
-        isVerified: profile.verified ?? true,
+        isVerified: profile.isVerified ?? profile.verified ?? true,
       };
 
       setUser(mapped);
@@ -114,7 +114,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       email: response.user.email,
       plan: response.user.plan,
       role: response.user.role,
-      isVerified: response.user.isVerified ?? true,
+      isVerified: response.user.isVerified ?? response.user.verified ?? true,
     };
 
     setUser(newUser);

@@ -50,8 +50,8 @@ function AppContent() {
             <Info size={18} />
           </div>
           <div>
-            <p className="text-xs font-bold text-gray-900 dark:text-white">Guest Mode Active</p>
-            <p className="text-[10px] text-gray-500">You are viewing a demo. Sign in or create an account to access live trading features.</p>
+            <p className="text-xs font-bold text-gray-900 dark:text-white">Sign In Required</p>
+            <p className="text-[10px] text-gray-500">Create an account or sign in to access trading features.</p>
           </div>
         </div>
         <button 

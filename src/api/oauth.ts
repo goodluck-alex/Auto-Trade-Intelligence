@@ -89,10 +89,12 @@ export async function exchangeCodeForToken(provider: Provider, code: string, ver
 
   const endpoint = resolveBackendEndpoint(backendTokenEndpoint);
 
+  const redirectUri = resolveRedirectUri();
+
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ provider, code, code_verifier: verifier, redirect_uri: window.location.origin + REDIRECT_PATH })
+    body: JSON.stringify({ provider, code, code_verifier: verifier, redirect_uri: redirectUri })
   });
 
   if (!res.ok) {

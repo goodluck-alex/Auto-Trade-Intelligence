@@ -5,6 +5,7 @@ export interface BackendUser {
   plan: string;
   role: 'user' | 'admin';
   isVerified: boolean;
+  verified?: boolean;
   provider?: string;
 }
 
